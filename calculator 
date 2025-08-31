@@ -1,8 +1,4 @@
-CalculatorApp/
-│── src/
-│   └── CalculatorApp.java
-│── README.md
-│── LICENSE
+
 
 import java.util.Scanner;
 
