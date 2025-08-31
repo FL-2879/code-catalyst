@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class Bill_at_KFC {
+
+    // Display the menu
+    private static void displayMenu() {
+        System.out.println("\n========== KFC MENU ==========");
+        System.out.println("1. Zinger Burger - ₹120");
+        System.out.println("2. Hot Wings (4 pcs) - ₹150");
+        System.out.println("3. Popcorn Chicken - ₹100");
+        System.out.println("4. Fries - ₹80");
+        System.out.println("5. Exit & Generate Bill");
+        System.out.println("==============================");
+        System.out.print("Enter your choice: ");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("☻ Welcome to KFC ☻");
+        System.out.print("Enter your name: ");
+        String name = sc.nextLine();
+
+        // Prices for menu items
+        String[] items = {"Zinger Burger", "Hot Wings", "Popcorn Chicken", "Fries"};
+        int[] prices = {120, 150, 100, 80};
+
+        // Track quantities
+        int[] quantities = new int[items.length];
+
+        boolean ordering = true;
+        while (ordering) {
+            displayMenu();
+            int choice = sc.nextInt();
+
+            if (choice >= 1 && choice <= 4) {
+                System.out.print("Enter quantity of " + items[choice - 1] + ": ");
+                int qty = sc.nextInt();
+                if (qty > 0) {
+                    quantities[choice - 1] += qty;
+                    System.out.println(qty + " x " + items[choice - 1] + " added to your order.");
+                } else {
+                    System.out.println("Invalid quantity! Please enter a positive number.");
+                }
+            } else if (choice == 5) {
+                ordering = false; // exit loop
+            } else {
+                System.out.println("Invalid choice! Please try again.");
+            }
+        }
+
+        // Generate bill
+        System.out.println("\n========== BILL ==========");
+        System.out.println("Customer: " + name);
+        int total = 0;
+        for (int i = 0; i < items.length; i++) {
+            if (quantities[i] > 0) {
+                int cost = prices[i] * quantities[i];
+                total += cost;
+                System.out.printf("%-20s x %d = ₹%d%n", items[i], quantities[i], cost);
+            }
+        }
+        System.out.println("--------------------------");
+        System.out.println("Total Amount: ₹" + total);
+        System.out.println("==========================");
+        System.out.println("Thank you, " + name + "! Enjoy your meal at KFC 🍗");
+        System.out.println("☻ Visit Again ☻");
+
+        sc.close();
+    }
+}
