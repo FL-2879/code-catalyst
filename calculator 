@@ -1,0 +1,130 @@
+CalculatorApp/
+│── src/
+│   └── CalculatorApp.java
+│── README.md
+│── LICENSE
+
+import java.util.Scanner;
+
+/**
+ * CalculatorApp - A simple menu-driven calculator application.
+ * Supports basic arithmetic and advanced functions.
+ * 
+ * Author: YourName
+ * GitHub: https://github.com/YourUsername
+ */
+public class CalculatorApp {
+
+    // Method to display menu
+    private static void displayMenu() {
+        System.out.println("\n===== Calculator App =====");
+        System.out.println("1. Addition (+)");
+        System.out.println("2. Subtraction (-)");
+        System.out.println("3. Multiplication (*)");
+        System.out.println("4. Division (/)");
+        System.out.println("5. Modulus (%)");
+        System.out.println("6. Square (x^2)");
+        System.out.println("7. Square Root (√x)");
+        System.out.println("8. Power (x^y)");
+        System.out.println("9. Exit");
+        System.out.print("Choose an option: ");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        do {
+            displayMenu();
+            while (!sc.hasNextInt()) {
+                System.out.println("Invalid input! Please enter a number.");
+                sc.next(); // discard invalid input
+            }
+            choice = sc.nextInt();
+
+            switch (choice) {
+                case 1: // Addition
+                    System.out.print("Enter first number: ");
+                    double a1 = sc.nextDouble();
+                    System.out.print("Enter second number: ");
+                    double b1 = sc.nextDouble();
+                    System.out.println("Result: " + (a1 + b1));
+                    break;
+
+                case 2: // Subtraction
+                    System.out.print("Enter first number: ");
+                    double a2 = sc.nextDouble();
+                    System.out.print("Enter second number: ");
+                    double b2 = sc.nextDouble();
+                    System.out.println("Result: " + (a2 - b2));
+                    break;
+
+                case 3: // Multiplication
+                    System.out.print("Enter first number: ");
+                    double a3 = sc.nextDouble();
+                    System.out.print("Enter second number: ");
+                    double b3 = sc.nextDouble();
+                    System.out.println("Result: " + (a3 * b3));
+                    break;
+
+                case 4: // Division
+                    System.out.print("Enter numerator: ");
+                    double a4 = sc.nextDouble();
+                    System.out.print("Enter denominator: ");
+                    double b4 = sc.nextDouble();
+                    if (b4 != 0) {
+                        System.out.println("Result: " + (a4 / b4));
+                    } else {
+                        System.out.println("Error: Division by zero is not allowed.");
+                    }
+                    break;
+
+                case 5: // Modulus
+                    System.out.print("Enter first number: ");
+                    int a5 = sc.nextInt();
+                    System.out.print("Enter second number: ");
+                    int b5 = sc.nextInt();
+                    if (b5 != 0) {
+                        System.out.println("Result: " + (a5 % b5));
+                    } else {
+                        System.out.println("Error: Division by zero is not allowed.");
+                    }
+                    break;
+
+                case 6: // Square
+                    System.out.print("Enter number: ");
+                    double num6 = sc.nextDouble();
+                    System.out.println("Result: " + (num6 * num6));
+                    break;
+
+                case 7: // Square Root
+                    System.out.print("Enter number: ");
+                    double num7 = sc.nextDouble();
+                    if (num7 >= 0) {
+                        System.out.println("Result: " + Math.sqrt(num7));
+                    } else {
+                        System.out.println("Error: Square root of negative number not possible.");
+                    }
+                    break;
+
+                case 8: // Power
+                    System.out.print("Enter base: ");
+                    double base = sc.nextDouble();
+                    System.out.print("Enter exponent: ");
+                    double exp = sc.nextDouble();
+                    System.out.println("Result: " + Math.pow(base, exp));
+                    break;
+
+                case 9:
+                    System.out.println("Exiting Calculator. Goodbye!");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice! Please try again.");
+            }
+
+        } while (choice != 9);
+
+        sc.close();
+    }
+}
